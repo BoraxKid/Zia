@@ -17,7 +17,7 @@ namespace Zia
         this->_threads.clear();
         while (i < threadCount)
         {
-            this->_threads.push_back(std::unique_ptr<Thread>(new Thread));
+            this->_threads.push_back(std::make_unique<Thread>());
             ++i;
         }
     }

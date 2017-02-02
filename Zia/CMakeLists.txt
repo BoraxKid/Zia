@@ -32,6 +32,7 @@ FILE(
 		ThreadPool.hpp
 		Thread.hpp
 		ModuleLoader.h
+        OpenSSLModule.hpp
 
         main.cpp
         CachedData.cpp
@@ -68,6 +69,7 @@ FILE(
 	HEADER_API
 
 	../Submodule_Zia/*.hh
+    ../Submodule_Zia/*.hpp
 )
 
 

@@ -16,7 +16,9 @@ FILE(
         SOURCE_FILES
 
         CachedData.h
+        CacheException.h
 		CacheManager.h
+		CacheSerializer.h
         DataBase.hpp
         ISock.hpp
 		NTPClock.h
@@ -37,6 +39,7 @@ FILE(
         main.cpp
         CachedData.cpp
 		CacheManager.cpp
+		CacheSerializer.cpp
         NTPClock.cpp
 		UnixSock.cpp
         WinSock.cpp

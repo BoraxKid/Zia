@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "NotImplementedException.h"
+#include "CacheException.h"
 #include "CacheManager.h"
 
 unsigned long Zia::CacheManager::searchCachedData(apouche::HttpRequest const & request)
@@ -26,6 +26,21 @@ Zia::CacheManager::~CacheManager(void)
 	{
 		delete(item.second);
 	});
+}
+
+bool Zia::CacheManager::isEmpty(void) const
+{
+	return (this->_cachedDataMap.empty());
+}
+
+void Zia::CacheManager::addCache(CachedData * cacheData)
+{
+	if (cacheData == nullptr)
+		throw (CacheException("CacheManager::addCache::cache is nullptr"));
+	if (this->_cachedDataMap.find(cacheData->getCacheID()) != this->_cachedDataMap.end())
+		throw (CacheException("CacheManager::addCache::already used cachedID:" + std::to_string(cacheData->getCacheID())));
+	this->_cachedDataMap[cacheData->getCacheID()] = cacheData;
+	this->_nextID = cacheData->getCacheID();
 }
 
 bool Zia::CacheManager::createCache(apouche::HttpRequest const & request, apouche::HttpResponse const & response, std::time_t expirationDate)

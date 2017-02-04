@@ -10,11 +10,7 @@ namespace Zia
 {
 #define DEFAULT_CACHE 0
 
-	class CacheException : public std::exception
-	{
-	public:
-		CacheException(std::string const& what) : std::exception(what.c_str()) {}
-	};
+
 
 	class CacheManager
 	{
@@ -26,6 +22,8 @@ namespace Zia
 	public:
 		CacheManager(void);
 		~CacheManager(void);
+		bool isEmpty(void) const;
+		void addCache(CachedData * cacheData);
 		bool createCache(apouche::HttpRequest const& request, apouche::HttpResponse const& response, std::time_t expirationDate);
 		bool updateCache(apouche::HttpRequest const & request, apouche::HttpResponse const & newResponse, std::time_t expirationTime);
 		CachedData const& getCache(apouche::HttpRequest const& requset) const;

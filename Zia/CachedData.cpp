@@ -1,4 +1,5 @@
 #include <time.h>
+#include <algorithm>
 #include "CachedData.h"
 
 Zia::CachedData::CachedData(apouche::HttpRequest const & request, apouche::HttpResponse const & response, std::time_t const & _creationDate, std::time_t const & _expirationDate, unsigned long id)
@@ -8,6 +9,11 @@ Zia::CachedData::CachedData(apouche::HttpRequest const & request, apouche::HttpR
 
 Zia::CachedData::~CachedData()
 {
+}
+
+unsigned long Zia::CachedData::getCacheID(void) const
+{
+	return (this->_cachedID);
 }
 
 apouche::HttpRequest const & Zia::CachedData::getRequest(void) const
@@ -40,6 +46,16 @@ std::time_t const & Zia::CachedData::getLastRefreshDate(void) const
 void Zia::CachedData::setLastRefreshTime(std::time_t const & refreshTime)
 {
 	this->_lastRefreshDate = refreshTime;
+}
+
+std::time_t const & Zia::CachedData::getExpirationTime(void) const
+{
+	return (this->_expirationDate);
+}
+
+void Zia::CachedData::setExpirationTime(std::time_t expirationTime)
+{
+	this->_expirationDate = expirationTime;
 }
 
 std::time_t const & Zia::CachedData::getcurrentAge(std::time_t now) const

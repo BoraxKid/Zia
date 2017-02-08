@@ -1,7 +1,7 @@
 #pragma once
 #include <ctime>
-#include "HttpRequest\HttpRequest.hh"
-#include "HttpResponse\HttpResponse.hh"
+#include "HttpRequest/HttpRequest.hh"
+#include "HttpResponse/HttpResponse.hh"
 
 namespace Zia
 {

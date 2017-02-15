@@ -115,6 +115,7 @@ IF(UNIX)
     TARGET_LINK_LIBRARIES(
             Zia
             pthread
+			dl
     )
 ENDIF()
 
